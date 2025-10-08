@@ -10,11 +10,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $units = UnitData::collect(Unit::with('categories')->whereBelongsTo($user)->get());
 
         return inertia('dashboard', [
-            'units' => $units,
+            'units' => UnitData::collect(Unit::with('categories')->whereBelongsTo(Auth::user())->get()),
         ]);
     }
 }

@@ -12,7 +12,7 @@ class UnitData extends Data
     public string $id,
     public string $name,
     /** @var \App\Data\CategoryData[] */
-    public array $categories,
+    public ?array $categories,
     public CarbonImmutable $created_at,
     public CarbonImmutable $updated_at,
   ) {
