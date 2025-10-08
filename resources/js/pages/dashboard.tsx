@@ -11,7 +11,13 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Dashboard() {
+interface DashboardProps {
+    units: App.Data.UnitData;
+}
+
+export default function Dashboard({ units }: DashboardProps) {
+    console.log(units);
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
