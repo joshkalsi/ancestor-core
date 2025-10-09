@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function stages()
+    {
+        return $this->belongsToMany(Stage::class);
+    }
 }

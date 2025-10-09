@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Stage;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Unit;
@@ -23,11 +24,10 @@ class UnitSeeder extends Seeder
         ];
 
         $user = User::first();
-
-        \Illuminate\Support\Facades\Log::info($user);
+        $stage = Stage::first();
 
         foreach ($units as $unitName) {
-            Unit::firstOrCreate(['name' => $unitName, 'user_id' => $user->id]);
+            Unit::firstOrCreate(['name' => $unitName, 'user_id' => $user->id, 'stage_id' => $stage->id]);
         }
     }
 }

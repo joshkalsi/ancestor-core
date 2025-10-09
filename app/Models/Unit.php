@@ -19,4 +19,11 @@ class Unit extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function stage()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
 }
