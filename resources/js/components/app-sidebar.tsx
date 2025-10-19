@@ -9,11 +9,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
-import { index } from '@/routes/units';
+import { dashboard, progress } from '@/routes';
+import { index as unitIndex } from '@/routes/units';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { LayoutGrid, PersonStanding } from 'lucide-react';
+import { LayoutGrid, Paintbrush, PersonStanding } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -23,8 +23,13 @@ const mainNavItems: NavItem[] = [
     icon: LayoutGrid,
   },
   {
+    title: 'Progress Tracker',
+    href: progress(),
+    icon: Paintbrush,
+  },
+  {
     title: 'Units',
-    href: index(),
+    href: unitIndex(),
     icon: PersonStanding,
   },
 ];

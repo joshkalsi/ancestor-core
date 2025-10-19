@@ -59,6 +59,6 @@ class User extends Authenticatable
 
     public function stages()
     {
-        return $this->belongsToMany(Stage::class);
+        return $this->belongsToMany(Stage::class)->withPivot('position');
     }
 }

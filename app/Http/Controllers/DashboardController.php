@@ -12,7 +12,7 @@ class DashboardController extends Controller
     {
 
         return inertia('dashboard', [
-            'units' => UnitData::collect(Unit::with('categories')->whereBelongsTo(Auth::user())->get()),
+            'units' => UnitData::collect(Unit::with('categories', 'stage')->whereBelongsTo(Auth::user())->get()),
         ]);
     }
 }

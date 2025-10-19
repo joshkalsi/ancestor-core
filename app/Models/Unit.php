@@ -22,7 +22,7 @@ class Unit extends Model
 
     public function stage()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(related: Stage::class);
     }
 
 

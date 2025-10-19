@@ -8,9 +8,9 @@ class Stage extends Model
 {
     protected $fillable = ['name', 'user_id'];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('position');
     }
 
     public function units()

@@ -25,8 +25,8 @@ class StageSeeder extends Seeder
 
         $index = 1;
         foreach ($stages as $stageName) {
-            $stage = Stage::firstOrCreate(['title' => $stageName, 'position' => $index]);
-            $user->stages()->attach($stage);
+            $stage = Stage::firstOrCreate(['title' => $stageName]);
+            $user->stages()->attach($stage, ['position' => $index]);
             $index++;
         }
     }
