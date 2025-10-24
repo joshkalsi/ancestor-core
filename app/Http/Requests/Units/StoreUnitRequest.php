@@ -13,7 +13,7 @@ class StoreUnitRequest extends FormRequest
     public function authorize(): bool
     {
         return Auth::check();
-        ;
+
     }
 
     /**
@@ -25,6 +25,7 @@ class StoreUnitRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'stage_id' => ['exists:App\Models\Stage,id']
         ];
     }
 }

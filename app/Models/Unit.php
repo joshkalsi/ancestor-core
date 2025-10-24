@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Unit extends Model
 {
     use HasUuids;
-    protected $fillable = ['name', 'user_id'];
+    protected $fillable = ['name', 'user_id', 'stage_id'];
 
     public function user()
     {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Data\UnitData;
 use App\Http\Requests\Units\StoreUnitRequest;
 use App\Http\Requests\Units\UpdateUnitRequest;
+use App\Models\Stage;
 use App\Models\Unit;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,12 @@ class UnitController extends Controller
      */
     public function store(StoreUnitRequest $request)
     {
-        $request->user()->units()->create($request->validated());
+        $validated = $request->validated();
+        if (!array_key_exists('stage_id', $validated)) {
+            $stage = Stage::first();
+            $validated['stage_id'] = $stage->id;
+        }
+        $request->user()->units()->create($validated);
 
         return to_route('units.index');
     }
@@ -44,7 +50,7 @@ class UnitController extends Controller
     public function show(string $id)
     {
         return inertia('units/show', [
-            'unit' => UnitData::from(Unit::find($id)),
+            'unit' => UnitData::from(Unit::with('categories')->find($id)),
         ]);
     }
 
@@ -54,7 +60,7 @@ class UnitController extends Controller
     public function edit(string $id)
     {
         return inertia('units/edit', [
-            'unit' => UnitData::from(Unit::find($id)),
+            'unit' => UnitData::from(Unit::with('categories')->find($id)),
         ]);
     }
 

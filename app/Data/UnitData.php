@@ -15,7 +15,7 @@ class UnitData extends Data
     public string $name,
     /** @var DataCollection<CategoryData> */
     public DataCollection $categories,
-    public StageData $stage,
+    public ?StageData $stage,
     public CarbonImmutable $created_at,
     public CarbonImmutable $updated_at,
   ) {
