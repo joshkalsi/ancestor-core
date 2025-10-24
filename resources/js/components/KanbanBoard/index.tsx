@@ -82,7 +82,14 @@ const KanbanBoard = ({ columns, units }: Props) => {
                 const column = data.columns.find((col) => col.id === columnId);
                 if (column)
                   return (
-                    <Column key={column.id} column={column} index={index} />
+                    <Column
+                      key={column.id}
+                      column={column}
+                      index={index}
+                      cards={units.filter(
+                        (unit) => unit.stage.id === column.id,
+                      )}
+                    />
                   );
               })}
               {provided.placeholder}
